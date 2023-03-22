@@ -1,0 +1,51 @@
+
+.learning-path-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.learning-path-container h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.learning-path-container ol {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.learning-path-container li {
+    margin-bottom: 50px;
+}
+.learning-path-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.learning-path-container p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+.learning-path-container .resources-container {
+    margin-top: 20px;
+}
+.learning-path-container .resources-container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.learning-path-container .resources-container ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+.learning-path-container .resources-container li {
+    margin-bottom: 10px;
+}
+.learning-path-container .resources-container li a {
+    font-size: 16px;
+    color: #0077cc;
+    text-decoration: none;
+}
+.learning-path-container .resources-container li a:hover {
+    text-decoration: underline;
+}
