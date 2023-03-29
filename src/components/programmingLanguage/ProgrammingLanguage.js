@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../dashboard/dashboard.css'
+import {useNavigate} from "react-router-dom";
 
 // ProgrammingLanguage functional component
-const ProgrammingLanguage=({ completedSteps = [], setCompletedSteps })=> {
+const ProgrammingLanguage=({ completedProgrammingLanguage = [], setCompletedProgrammingLanguage })=> {
+    const navigate = useNavigate();
     const [language, setLanguage] = useState([
         {
             id:1,
@@ -12,7 +14,7 @@ const ProgrammingLanguage=({ completedSteps = [], setCompletedSteps })=> {
             resources: [
                 {
                     id: 1,
-                    type: 'tutorial',
+                    type: 'Tutorial',
                     title: 'Learn Python',
                     urlList: [
                         {
@@ -27,7 +29,7 @@ const ProgrammingLanguage=({ completedSteps = [], setCompletedSteps })=> {
                 },
                 {
                     id: 2,
-                    type: 'exercise',
+                    type: 'Exercise',
                     title: 'Programming Language Basics Quiz',
                     urlList: [
                         {
@@ -48,22 +50,23 @@ const ProgrammingLanguage=({ completedSteps = [], setCompletedSteps })=> {
         // Load completed steps from local storage
         const storedCompletedSteps = localStorage.getItem('completedSteps');
         if (storedCompletedSteps) {
-            setCompletedSteps(JSON.parse(storedCompletedSteps));
+            setCompletedProgrammingLanguage(JSON.parse(storedCompletedSteps));
         }
     }, []);
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
-    }, [completedSteps]);
+        localStorage.setItem('completedSteps', JSON.stringify(completedProgrammingLanguage));
+    }, [completedProgrammingLanguage]);
 
     const handleCompleteStep = (stepIndex) => {
-        if (!completedSteps.includes(stepIndex)) {
-            setCompletedSteps([...completedSteps, stepIndex]);
+        if (!completedProgrammingLanguage.includes(stepIndex)) {
+            setCompletedProgrammingLanguage([...completedProgrammingLanguage, stepIndex]);
+            setTimeout(()=>{navigate('/dashboard')}, 2000);
         }
     };
 
-    const progress = ((completedSteps.length / language.length) * 100).toFixed(0);
+    const progress = ((completedProgrammingLanguage.length / language.length) * 100).toFixed(0);
     return (
        <div className="container-dashboard box-color1">
            <div className="learning-path-container">

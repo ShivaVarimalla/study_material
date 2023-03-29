@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import '../dashboard/dashboard.css'
+import {useNavigate} from "react-router-dom";
 
 //BasicConcepts functional component
-const BasicConcepts = ({ completedSteps = [], setCompletedSteps }) => {
+const BasicConcepts = ({ completedBasicConcepts = [], setCompletedBasicConcepts }) => {
+    const navigate = useNavigate();
     const [concepts, setConcepts] = useState([
         {
             id: 1,
@@ -12,7 +14,7 @@ const BasicConcepts = ({ completedSteps = [], setCompletedSteps }) => {
             resources: [
                 {
                     id: 1,
-                    type: 'article',
+                    type: 'Article',
                     title: 'A Beginner’s Guide to Programming Concepts',
                     urlList: [
                         {
@@ -27,16 +29,16 @@ const BasicConcepts = ({ completedSteps = [], setCompletedSteps }) => {
                 },
                 {
                     id: 2,
-                    type: 'video',
+                    type: 'Exercise',
                     title: 'Programming Basics',
                     urlList: [
                         {
                             site: "Codecademy's Introduction to Programming",
-                            url: 'https://www.youtube.com/watch?v=zOjov-2OZ0E',
+                            url: 'https://www.w3schools.com/quiztest/quiztest.asp?qtest=Basic',
                         },
                         {
                             site: "Khan Academy's Computer Programming",
-                            url: 'https://www.youtube.com/watch?v=quW5dAGpXiU',
+                            url: 'https://www.hackerrank.com/domains/python/py-introduction',
                         },
                     ],
                 },
@@ -48,22 +50,23 @@ const BasicConcepts = ({ completedSteps = [], setCompletedSteps }) => {
         // Load completed steps from local storage
         const storedCompletedSteps = localStorage.getItem('completedSteps');
         if (storedCompletedSteps) {
-            setCompletedSteps(JSON.parse(storedCompletedSteps));
+            setCompletedBasicConcepts(JSON.parse(storedCompletedSteps));
         }
     }, []);
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
-    }, [completedSteps]);
+        localStorage.setItem('completedSteps', JSON.stringify(completedBasicConcepts));
+    }, [completedBasicConcepts]);
 
     const handleCompleteStep = (stepIndex) => {
-        if (!completedSteps.includes(stepIndex)) {
-            setCompletedSteps([...completedSteps, stepIndex]);
+        if (!completedBasicConcepts.includes(stepIndex)) {
+            setCompletedBasicConcepts([...completedBasicConcepts, stepIndex]);
+            setTimeout(()=>{navigate('/dashboard')}, 2000);
         }
     };
 
-    const progress = ((completedSteps.length / concepts.length) * 100).toFixed(0);
+    const progress = ((completedBasicConcepts.length / concepts.length) * 100).toFixed(0);
 
     return (
         <div className="container-dashboard box-color">

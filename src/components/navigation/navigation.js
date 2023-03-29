@@ -11,7 +11,11 @@ import ComplexPrograms from "../complexPrograms/complexPrograms";
 
 // Navigation functional component
 const Navigation=()=> {
-    const [completedSteps, setCompletedSteps] = useState([]);
+    const [completedBasicConcepts, setCompletedBasicConcepts] = useState([]);
+    const [completedProgrammingLanguage, setCompletedProgrammingLanguage] = useState([]);
+    const [completedAlgorithmsDataStructures, setCompletedAlgorithmsDataStructures] = useState([]);
+    const [completedSimplePrograms, setCompletedSimplePrograms] = useState([]);
+    const [completedComplexPrograms, setCompletedComplexPrograms] = useState([]);
     return (
             <BrowserRouter>
                 <div>
@@ -19,11 +23,11 @@ const Navigation=()=> {
                         {/*no authentication needed*/}
                         <Route path="/" element={<Login/>}/>
                         <Route path="/dashboard" element={<CourseLearningPath/>}/>
-                        <Route path="/basicConcepts" element={<BasicConcepts completedSteps={completedSteps} setCompletedSteps={setCompletedSteps}/>}/>
-                        <Route path="/programmingLanguage" element={<ProgrammingLanguage completedSteps={completedSteps} setCompletedSteps={setCompletedSteps}/>}/>
-                        <Route path="/algorithmsDataStructures" element={<AlgorithmsDataStructures completedSteps={completedSteps} setCompletedSteps={setCompletedSteps}/>}/>
-                        <Route path="/simplePrograms" element={<SimplePrograms completedSteps={completedSteps} setCompletedSteps={setCompletedSteps}/>}/>
-                        <Route path="/complexPrograms" element={<ComplexPrograms completedSteps={completedSteps} setCompletedSteps={setCompletedSteps}/>}/>
+                        <Route path="/basicConcepts" element={<BasicConcepts completedBasicConcepts={completedBasicConcepts} setCompletedBasicConcepts={setCompletedBasicConcepts}/>}/>
+                        <Route path="/programmingLanguage" element={<ProgrammingLanguage completedProgrammingLanguage={completedProgrammingLanguage} setCompletedProgrammingLanguage={setCompletedProgrammingLanguage}/>}/>
+                        <Route path="/algorithmsDataStructures" element={<AlgorithmsDataStructures completedAlgorithmsDataStructures={completedAlgorithmsDataStructures} setCompletedAlgorithmsDataStructures={setCompletedAlgorithmsDataStructures}/>}/>
+                        <Route path="/simplePrograms" element={<SimplePrograms completedSimplePrograms={completedSimplePrograms} setCompletedSimplePrograms={setCompletedSimplePrograms}/>}/>
+                        <Route path="/complexPrograms" element={<ComplexPrograms completedComplexPrograms={completedComplexPrograms} setCompletedComplexPrograms={setCompletedComplexPrograms}/>}/>
                         <Route path="/signUp" element={<Registration/>}/>
                     </Routes>
                 </div>

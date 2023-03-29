@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../dashboard/dashboard.css'
+import {useNavigate} from "react-router-dom";
 
 // SimplePrograms functional component
-const SimplePrograms=({ completedSteps = [], setCompletedSteps })=> {
+const SimplePrograms=({ completedSimplePrograms = [], setCompletedSimplePrograms })=> {
+    const navigate = useNavigate();
     const [programs, setPrograms] = useState([
         {
             id:1,
@@ -48,22 +50,23 @@ const SimplePrograms=({ completedSteps = [], setCompletedSteps })=> {
         // Load completed steps from local storage
         const storedCompletedSteps = localStorage.getItem('completedSteps');
         if (storedCompletedSteps) {
-            setCompletedSteps(JSON.parse(storedCompletedSteps));
+            setCompletedSimplePrograms(JSON.parse(storedCompletedSteps));
         }
     }, []);
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
-    }, [completedSteps]);
+        localStorage.setItem('completedSteps', JSON.stringify(completedSimplePrograms));
+    }, [completedSimplePrograms]);
 
     const handleCompleteStep = (stepIndex) => {
-        if (!completedSteps.includes(stepIndex)) {
-            setCompletedSteps([...completedSteps, stepIndex]);
+        if (!completedSimplePrograms.includes(stepIndex)) {
+            setCompletedSimplePrograms([...completedSimplePrograms, stepIndex]);
+            setTimeout(()=>{navigate('/dashboard')}, 2000);
         }
     };
 
-    const progress = ((completedSteps.length / programs.length) * 100).toFixed(0);
+    const progress = ((completedSimplePrograms.length / programs.length) * 100).toFixed(0);
 
     return (
         <div className="container-dashboard box-color3">

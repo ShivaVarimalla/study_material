@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
+import {useNavigate} from "react-router-dom";
 
 //AlgorithmsDataStructures functional component
-const AlgorithmsDataStructures=({ completedSteps = [], setCompletedSteps })=> {
+const AlgorithmsDataStructures=({ completedAlgorithmsDataStructures = [], setCompletedAlgorithmsDataStructures })=> {
+    const navigate = useNavigate();
     const [algo, setAlgo] = useState([
         {
             id:1,
@@ -26,16 +28,16 @@ const AlgorithmsDataStructures=({ completedSteps = [], setCompletedSteps })=> {
                 },
                 {
                     id:2,
-                    type: 'video',
+                    type: 'Exercise',
                     title: 'Sorting Algorithms Explained',
                     urlList: [
                         {
-                            "site": "Sorting Algorithms Visualized - AlgoRythmics",
-                            "url" : "https://www.youtube.com/watch?v=kPRA0W1kECg"
+                            "site": "Sorting Algorithms Visualized",
+                            "url" : "https://www.hackerearth.com/practice/algorithms/sorting/bubble-sort/visualize/"
                         },
                         {
-                            "site": "Sorting Algorithms - mycodeschool",
-                            "url" : "https://www.youtube.com/watch?v=f8hXR_Hvybo&list=PL2_aWCzGMAwKedT2KfDMB9YA5DgASZb3U"
+                            "site": "Sorting Algorithms",
+                            "url" : "https://www.hackerrank.com/domains/algorithms/arrays-and-sorting/difficulty:true/page:1"
                         },
                     ]
                 }
@@ -47,22 +49,23 @@ const AlgorithmsDataStructures=({ completedSteps = [], setCompletedSteps })=> {
         // Load completed steps from local storage
         const storedCompletedSteps = localStorage.getItem('completedSteps');
         if (storedCompletedSteps) {
-            setCompletedSteps(JSON.parse(storedCompletedSteps));
+            setCompletedAlgorithmsDataStructures(JSON.parse(storedCompletedSteps));
         }
     }, []);
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedSteps));
-    }, [completedSteps]);
+        localStorage.setItem('completedSteps', JSON.stringify(completedAlgorithmsDataStructures));
+    }, [completedAlgorithmsDataStructures]);
 
     const handleCompleteStep = (stepIndex) => {
-        if (!completedSteps.includes(stepIndex)) {
-            setCompletedSteps([...completedSteps, stepIndex]);
+        if (!completedAlgorithmsDataStructures.includes(stepIndex)) {
+            setCompletedAlgorithmsDataStructures([...completedAlgorithmsDataStructures, stepIndex]);
+            setTimeout(()=>{navigate('/dashboard')}, 2000);
         }
     };
 
-    const progress = ((completedSteps.length / algo.length) * 100).toFixed(0);
+    const progress = ((completedAlgorithmsDataStructures.length / algo.length) * 100).toFixed(0);
 
     return (
         <div className="container-dashboard box-color2">
