@@ -48,7 +48,7 @@ const ProgrammingLanguage=({ completedProgrammingLanguage = [], setCompletedProg
 
     useEffect(() => {
         // Load completed steps from local storage
-        const storedCompletedSteps = localStorage.getItem('completedSteps');
+        const storedCompletedSteps = localStorage.getItem('completedProgrammingLanguage');
         if (storedCompletedSteps) {
             setCompletedProgrammingLanguage(JSON.parse(storedCompletedSteps));
         }
@@ -56,7 +56,7 @@ const ProgrammingLanguage=({ completedProgrammingLanguage = [], setCompletedProg
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedProgrammingLanguage));
+        localStorage.setItem('completedProgrammingLanguage', JSON.stringify(completedProgrammingLanguage));
     }, [completedProgrammingLanguage]);
 
     const handleCompleteStep = (stepIndex) => {

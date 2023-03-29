@@ -48,7 +48,7 @@ const BasicConcepts = ({ completedBasicConcepts = [], setCompletedBasicConcepts 
 
     useEffect(() => {
         // Load completed steps from local storage
-        const storedCompletedSteps = localStorage.getItem('completedSteps');
+        const storedCompletedSteps = localStorage.getItem('completedBasicConcepts');
         if (storedCompletedSteps) {
             setCompletedBasicConcepts(JSON.parse(storedCompletedSteps));
         }
@@ -56,7 +56,7 @@ const BasicConcepts = ({ completedBasicConcepts = [], setCompletedBasicConcepts 
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedBasicConcepts));
+        localStorage.setItem('completedBasicConcepts', JSON.stringify(completedBasicConcepts));
     }, [completedBasicConcepts]);
 
     const handleCompleteStep = (stepIndex) => {

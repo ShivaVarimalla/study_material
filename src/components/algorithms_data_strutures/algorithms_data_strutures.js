@@ -47,7 +47,7 @@ const AlgorithmsDataStructures=({ completedAlgorithmsDataStructures = [], setCom
 
     useEffect(() => {
         // Load completed steps from local storage
-        const storedCompletedSteps = localStorage.getItem('completedSteps');
+        const storedCompletedSteps = localStorage.getItem('completedAlgorithmsDataStructures');
         if (storedCompletedSteps) {
             setCompletedAlgorithmsDataStructures(JSON.parse(storedCompletedSteps));
         }
@@ -55,7 +55,7 @@ const AlgorithmsDataStructures=({ completedAlgorithmsDataStructures = [], setCom
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedAlgorithmsDataStructures));
+        localStorage.setItem('completedAlgorithmsDataStructures', JSON.stringify(completedAlgorithmsDataStructures));
     }, [completedAlgorithmsDataStructures]);
 
     const handleCompleteStep = (stepIndex) => {

@@ -48,7 +48,7 @@ const ComplexPrograms=({ completedComplexPrograms = [], setCompletedComplexProgr
 
     useEffect(() => {
         // Load completed steps from local storage
-        const storedCompletedSteps = localStorage.getItem('completedSteps');
+        const storedCompletedSteps = localStorage.getItem('completedComplexPrograms');
         if (storedCompletedSteps) {
             setCompletedComplexPrograms(JSON.parse(storedCompletedSteps));
         }
@@ -56,7 +56,7 @@ const ComplexPrograms=({ completedComplexPrograms = [], setCompletedComplexProgr
 
     useEffect(() => {
         // Save completed steps to local storage
-        localStorage.setItem('completedSteps', JSON.stringify(completedComplexPrograms));
+        localStorage.setItem('completedComplexPrograms', JSON.stringify(completedComplexPrograms));
     }, [completedComplexPrograms]);
 
     const handleCompleteStep = (stepIndex) => {
